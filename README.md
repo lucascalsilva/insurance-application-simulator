@@ -29,11 +29,11 @@ java -jar insurance-application-simulator-0.0.1-SNAPSHOT.jar [number of applicat
 
 Below is the description of the paramters:
 
-* [number of applications]: Number of dummy applications that need to be created.
-* [wait time]: Time (in seconds) that the utiliy will wait between creating each dummy application.
-* [language]: Language that will be used, can either be "de" (Deutsch) or "en" (English).
-* [insurance application endpoint] (Optional): Overwrites the default endpoint for the rest api of the insurance application. The default is "http://localhost:8080/camunda-showcase-insurance-application/api/new-application".
-* [base request filename] (Optional): Overwrites the base-request.json file with a custom one (must be in the same directory).
+* **[number of applications]:** Number of dummy applications that need to be created.
+* **[wait time]:** Time (in seconds) that the utiliy will wait between creating each dummy application.
+* **[language]:** Language that will be used, can either be "de" (Deutsch) or "en" (English).
+* **[insurance application endpoint] (Optional):** Overwrites the default endpoint for the rest api of the insurance application. The default is "http://localhost:8080/camunda-showcase-insurance-application/api/new-application".
+* **[base request filename] (Optional):** Overwrites the base-request.json file with a custom one (must be in the same directory).
 
 ## Example:
 
