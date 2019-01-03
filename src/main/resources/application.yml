@@ -1,0 +1,13 @@
+spring.main:
+  web-application-type: NONE
+file:
+  baserequest: base-request.json
+  firstnamesfemale: firstnames-female.txt
+  firstnamesmale: firstnames-male.txt
+  surnamesde: surnames-de.txt
+  surnamesen: surnames-en.txt
+adapter:
+  insuranceapplication:
+    endpoint: http://localhost:8080/camunda-showcase-insurance-application
+    merge:
+      path: api/new-application

@@ -1,0 +1,9 @@
+{
+  "applicant":{
+    "email":"mission@camunda.com"
+  },
+  "vehicleManufacturer":"VW",
+  "vehicleType":"Golf V",
+  "product":"Camundanzia Vollkasko Plus",
+  "priceIndicationInCent":15000
+}
