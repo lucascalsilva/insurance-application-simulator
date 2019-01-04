@@ -52,4 +52,4 @@ java -jar -Dnumapp=200 -Dwaittime=2 -Dlanguage=en -Dinsappendpoint=http://localh
 
 **Creates 300 applications, each one at every 1 seconds, using the English as language, a custom endpoint for the insurance application api, a custom-file.json as the base request file and a different applicant email.**
 
-java -jar -Dnumapp=300 -Dwaittime=1 -Dlanguage=en -Dinsappendpoint=http://localhost:8080/camunda-showcase-insurance-application/api/new-application/de -Dbasereqfile=custom-request.json insurance-application-simulator-0.0.1-SNAPSHOT.jar -Dapplemail=lucas.silva@camunda.com
+java -jar -Dnumapp=300 -Dwaittime=1 -Dlanguage=en -Dinsappendpoint=http://localhost:8080/camunda-showcase-insurance-application/api/new-application/de -Dbasereqfile=custom-request.json -Dapplemail=lucas.silva@camunda.com insurance-application-simulator-0.0.1-SNAPSHOT.jar
