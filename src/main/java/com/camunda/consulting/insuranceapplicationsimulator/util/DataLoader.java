@@ -1,7 +1,8 @@
 package com.camunda.consulting.insuranceapplicationsimulator.util;
 
-import com.camunda.consulting.insuranceapplicationsimulator.exception.FileProcessingError;
 import com.camunda.consulting.insuranceapplicationsimulator.model.NewApplication;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,20 +15,19 @@ import java.util.logging.Logger;
 @Component
 public class DataLoader {
 
-    private static final Logger LOGGER = Logger.getLogger(DataLoader.class.getName());
     private String baseFileRequestJson;
     private List<String> firstNamesFemale;
     private List<String> firstNamesMale;
     private List<String> surnamesDe;
     private List<String> surnamesEn;
-    private SimulatorHelper simulatorHelper;
+    private FileProcessor simulatorHelper;
 
     public DataLoader(@Value(PropertyNames.FILE_BASEREQUEST) String FILE_BASEREQUEST,
                       @Value(PropertyNames.FILE_FIRSTNAMESFEMALES) String FILE_FIRSTNAMESFEMALE,
                       @Value(PropertyNames.FILE_FIRSTNAMESMALES) String FILE_FIRSTNAMESMALES,
                       @Value(PropertyNames.FILE_SURNAMEDE) String FILE_SURNAMEDE,
                       @Value(PropertyNames.FILE_SURNAMEEN) String FILE_SURNAMEEN,
-                      @Autowired SimulatorHelper simulatorHelper){
+                      @Autowired FileProcessor simulatorHelper) throws IOException {
 
         this.simulatorHelper = simulatorHelper;
         baseFileRequestJson = simulatorHelper.fileToString(FILE_BASEREQUEST, true);
@@ -38,14 +38,13 @@ public class DataLoader {
 
     }
 
-    public NewApplication getBaseApplication() {
+    public NewApplication getBaseApplication() throws IOException {
         try {
             return new ObjectMapper().readValue(baseFileRequestJson, NewApplication.class);
         }
         catch (IOException e) {
-            LOGGER.severe(e.getMessage());
+            throw e;
         }
-        return null;
     }
 
     public String getBaseFileRequestJson() {
@@ -56,7 +55,7 @@ public class DataLoader {
         this.baseFileRequestJson = baseFileRequestJson;
     }
 
-    public void setExtBaseFileRequestJson(String extBaseFileRequestJson) {
+    public void setExtBaseFileRequestJson(String extBaseFileRequestJson) throws IOException {
         this.baseFileRequestJson = simulatorHelper.fileToString(extBaseFileRequestJson, false);
     }
 

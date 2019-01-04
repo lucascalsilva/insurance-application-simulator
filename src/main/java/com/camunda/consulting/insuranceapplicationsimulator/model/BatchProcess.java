@@ -7,13 +7,15 @@ public class BatchProcess {
     private Integer numberOfApplications;
     private Integer waitTime;
     private Language language;
+    private String applicantMail;
     private String baseRequestFilename;
     private String insuranceAppEndpoint;
 
-    public BatchProcess(Integer numberOfApplications, Integer waitTime, Language language, String baseRequestFilename, String insuranceAppEndpoint) {
+    public BatchProcess(Integer numberOfApplications, Integer waitTime, Language language, String applicantMail, String baseRequestFilename, String insuranceAppEndpoint) {
         this.numberOfApplications = numberOfApplications;
         this.waitTime = waitTime;
         this.language = language;
+        this.applicantMail = applicantMail;
         this.baseRequestFilename = baseRequestFilename;
         this.insuranceAppEndpoint = insuranceAppEndpoint;
     }
@@ -40,6 +42,14 @@ public class BatchProcess {
 
     public void setLanguage(Language language) {
         this.language = language;
+    }
+
+    public String getApplicantMail() {
+        return applicantMail;
+    }
+
+    public void setApplicantMail(String applicantMail) {
+        this.applicantMail = applicantMail;
     }
 
     public String getBaseRequestFilename() {

@@ -1,8 +1,12 @@
 package com.camunda.consulting.insuranceapplicationsimulator.exception;
 
-public class InsuranceAppServiceException extends RuntimeException {
+public class InsuranceAppServiceException extends Exception {
 
-    public InsuranceAppServiceException(String message){
+    public InsuranceAppServiceException(String message) {
         super(message);
+    }
+
+    public InsuranceAppServiceException(String message, Throwable cause){
+        super(message, cause);
     }
 }

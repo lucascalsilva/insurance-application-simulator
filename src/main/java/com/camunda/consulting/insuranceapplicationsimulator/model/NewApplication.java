@@ -6,12 +6,20 @@ import java.util.Locale;
 
 public class NewApplication {
 
+  private String applicationNumber;
   private Person applicant;
   private String vehicleManufacturer;
   private String vehicleType;
   private String product;
-
   private long priceIndicationInCent;
+
+  public String getApplicationNumber() {
+    return applicationNumber;
+  }
+
+  public void setApplicationNumber(String applicationNumber) {
+    this.applicationNumber = applicationNumber;
+  }
 
   public Person getApplicant() {
     return applicant;

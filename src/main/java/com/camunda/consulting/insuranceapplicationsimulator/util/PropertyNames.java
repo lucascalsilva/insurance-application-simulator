@@ -2,7 +2,6 @@ package com.camunda.consulting.insuranceapplicationsimulator.util;
 
 public class PropertyNames {
 
-    public static final String LANGUAGE = "${language}";
     public static final String FILE_BASEREQUEST = "${file.baserequest}";
     public static final String FILE_FIRSTNAMESFEMALES = "${file.firstnamesfemale}";
     public static final String FILE_FIRSTNAMESMALES = "${file.firstnamesmale}";
