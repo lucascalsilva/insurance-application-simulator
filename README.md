@@ -25,7 +25,7 @@ The applicant's name and birthday are randomly generated.
 
 To execute the application, just build it and run the following command with the generated jar:
 
-java -jar -Dnumapp=300 -Dwaittime=1 -Dlanguage=en -Dinsappendpoint=http://localhost:8080/camunda-showcase-insurance-application/api/new-application/de -Dbasereqfile=custom-request.json insurance-application-simulator-0.0.1-SNAPSHOT.jar -Dapplemail=lucas.silva@camunda.com
+java -jar -Dnumapp=300 -Dwaittime=1 -Dlanguage=en -Dinsappendpoint=http://localhost:8080/camunda-showcase-insurance-application/api/new-application/de -Dbasereqfile=custom-request.json -Dapplemail=lucas.silva@camunda.com insurance-application-simulator-0.0.1-SNAPSHOT.jar
 
 Below is the description of the arguments:
 
