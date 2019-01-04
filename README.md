@@ -19,15 +19,15 @@ All insurance applications are created using a template (base-request.json), whi
 }
 ```
 
-The applicant name and birthday are randomly generated.
+The applicant's name and birthday are randomly generated.
 
 ## How-To
 
-To execute the application, just build the jar run the following command:
+To execute the application, just build the application and run the following command with the generated jar:
 
 java -jar insurance-application-simulator-0.0.1-SNAPSHOT.jar [number of applications] [wait time] [language] [base request filename] [insurance application endpoint]
 
-Below is the description of the paramters:
+Below is the description of the arguments:
 
 * **[number of applications]:** Number of dummy applications that need to be created.
 * **[wait time]:** Time (in seconds) that the utiliy will wait between creating each dummy application.
