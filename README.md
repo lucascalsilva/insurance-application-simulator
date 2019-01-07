@@ -19,7 +19,20 @@ All insurance applications are created using a template (base-request.json), whi
 }
 ```
 
-The applicant's name and birthday are randomly generated.
+The applicant's name is randomly generated. For the birthday (which affects the age that will affect the risk associated with that person), if you provide it in your custom "base-request.json" file, then the application will use that for all the generated requests, otherwise, it will choose a random date between 1980 and 2000. Below is a JSON file with the birthday on it:
+
+```javascript
+{
+  "applicant":{
+    "email":"mission@camunda.com",
+    "birthday":"2000-01-01T00:00:00"
+  },
+  "vehicleManufacturer":"VW",
+  "vehicleType":"Golf V",
+  "product":"Camundanzia Vollkasko Plus",
+  "priceIndicationInCent":15000
+}
+```
 
 ## How-To
 
