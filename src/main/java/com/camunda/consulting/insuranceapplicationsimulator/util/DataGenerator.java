@@ -29,7 +29,7 @@ public class DataGenerator {
             newApplication.getApplicant().setSex(sex.name());
             newApplication.getApplicant().setName(getRandomName(sex, batchProcess.getLanguage()));
             if(batchProcess.getApplicantMail() != null) newApplication.getApplicant().setEmail(batchProcess.getApplicantMail());
-            newApplication.getApplicant().setBirthday(getRandomDate());
+            if(newApplication.getApplicant().getBirthday() == null) newApplication.getApplicant().setBirthday(getRandomDate());
             applications.add(newApplication);
         }
         return applications;
