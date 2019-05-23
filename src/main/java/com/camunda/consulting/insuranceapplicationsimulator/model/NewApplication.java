@@ -6,58 +6,120 @@ import java.util.Locale;
 
 public class NewApplication {
 
-  private String applicationNumber;
-  private Person applicant;
-  private String vehicleManufacturer;
-  private String vehicleType;
-  private String product;
-  private long priceIndicationInCent;
+	private String applicationNumber;
 
-  public String getApplicationNumber() {
-    return applicationNumber;
-  }
+	private Person applicant;
+	private String employment;
 
-  public void setApplicationNumber(String applicationNumber) {
-    this.applicationNumber = applicationNumber;
-  }
+	private String category;
+	private String corporation;
 
-  public Person getApplicant() {
-    return applicant;
-  }
+	private String contractNumber;
+	private long priceIndicationInCent;
+	private long premiumInCent;
 
-  public void setApplicant(Person applicant) {
-    this.applicant = applicant;
-  }
+	public static int counter = 0;
 
-  public String getVehicleManufacturer() {
-    return vehicleManufacturer;
-  }
+	public static String generateUUID() {
+		// for demo reasons we generate something readable
+		if (counter == 0) {
+			counter = Calendar.getInstance().get(Calendar.MINUTE) + Calendar.getInstance().get(Calendar.SECOND);
+		} else {
+			counter++;
+		}
+		String result = "A-" + Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + counter;
+		return result;
+	}
 
-  public void setVehicleManufacturer(String vehicleManufacturer) {
-    this.vehicleManufacturer = vehicleManufacturer;
-  }
+	public NewApplication() {
+		applicationNumber = generateUUID();
+	}
 
-  public String getVehicleType() {
-    return vehicleType;
-  }
+	public NewApplication(String applicationNumber) {
+		super();
+		this.applicationNumber = applicationNumber;
+	}
 
-  public void setVehicleType(String vehicleType) {
-    this.vehicleType = vehicleType;
-  }
+	public String getCorporation() {
+		return corporation;
+	}
 
-  public String getProduct() {
-    return product;
-  }
+	public void setCorporation(String corporation) {
+		this.corporation = corporation;
+	}
 
-  public void setProduct(String product) {
-    this.product = product;
-  }
+	public String getPremium() {
+		// TODO: EN/DE switch
+		NumberFormat n = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+		return n.format(premiumInCent / 100.0);
+	}
 
-  public long getPriceIndicationInCent() {
-    return priceIndicationInCent;
-  }
+	public void setPremium(String s) {
+		// ignore - currently needed because JsonIgnore configuration not yet done
+	}
 
-  public void setPriceIndicationInCent(long priceIndicationInCent) {
-    this.priceIndicationInCent = priceIndicationInCent;
-  }
+	public String getPriceIndication() {
+		NumberFormat n = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+		return n.format(priceIndicationInCent / 100.0);
+	}
+
+	public void setPriceIndication(String s) {
+		// ignore - currently needed because JsonIgnore configuration not yet done
+	}
+
+	public Person getApplicant() {
+		return applicant;
+	}
+
+	public void setApplicant(Person applicant) {
+		this.applicant = applicant;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getEmployment() {
+		return employment;
+	}
+
+	public void setEmployment(String employment) {
+		this.employment = employment;
+	}
+
+	public String getContractNumber() {
+		return contractNumber;
+	}
+
+	public void setContractNumber(String contractNumber) {
+		this.contractNumber = contractNumber;
+	}
+
+	public long getPremiumInCent() {
+		return premiumInCent;
+	}
+
+	public void setPremiumInCent(long premiumInCent) {
+		this.premiumInCent = premiumInCent;
+	}
+
+	public long getPriceIndicationInCent() {
+		return priceIndicationInCent;
+	}
+
+	public void setPriceIndicationInCent(long priceIndicationInCents) {
+		this.priceIndicationInCent = priceIndicationInCents;
+	}
+	
+	public void setApplicationNumber(String applicationNumber) {
+		this.applicationNumber = applicationNumber;
+	}
+
+	public String getApplicationNumber() {
+		return applicationNumber;
+	}
 }

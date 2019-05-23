@@ -8,6 +8,6 @@ file:
   surnamesen: surnames-en.txt
 adapter:
   insuranceapplication:
-    endpoint: http://localhost:8080/camunda-showcase-insurance-application
+    endpoint: http://localhost:8080/camunda-showcase-customer-onboarding
     merge:
       path: api/new-application

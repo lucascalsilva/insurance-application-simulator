@@ -28,7 +28,7 @@ public class InsuranceApplicationAdapter {
             if (endpoint == null)
                 endpoint = ADAPTER_INSURANCEAPPLICATION_ENDPOINT + "/" + ADAPTER_INSURANCEAPPLICATION_MERGE_PATH + "/" + language;
 
-            response = response = ClientBuilder.newClient().target(endpoint)
+            response = ClientBuilder.newClient().target(endpoint)
                     .request().header("Content-Type", "application/json")
                     .header("Referer", endpoint)
                     .post(Entity.entity(newApplication, MediaType.APPLICATION_JSON_TYPE));
@@ -36,6 +36,7 @@ public class InsuranceApplicationAdapter {
             int status = response.getStatus();
 
             if (status != 200) {
+            	System.out.println(endpoint);
                 throw new InsuranceAppServiceException("Error when creating the insurance application. HTTP Status: " + status);
             }
 

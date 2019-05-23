@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -26,13 +28,30 @@ public class DataGenerator {
         for(int i=0;i<batchProcess.getNumberOfApplications();i++) {
             NewApplication newApplication = dataLoader.getBaseApplication();
             Sex sex = getRandomSex();
-            newApplication.getApplicant().setSex(sex.name());
+            newApplication.setCorporation(getRandomCorporation());
+            newApplication.setCategory(getRandomCategory());
+            newApplication.setEmployment(getRandomEmployment());
+            newApplication.getApplicant().setGender(sex.name());
             newApplication.getApplicant().setName(getRandomName(sex, batchProcess.getLanguage()));
             if(batchProcess.getApplicantMail() != null) newApplication.getApplicant().setEmail(batchProcess.getApplicantMail());
-            if(newApplication.getApplicant().getBirthday() == null) newApplication.getApplicant().setBirthday(getRandomDate());
+            if(newApplication.getApplicant().getBirthday() == null) newApplication.getApplicant().setBirthday(Date.from(LocalDate.parse(getRandomDate()).atStartOfDay(ZoneId.systemDefault()).toInstant()));
             applications.add(newApplication);
         }
         return applications;
+    }
+    
+    private String getRandomCorporation() {
+    	return new String[] {"Camuntelia", "Camunbankia", "Camsurance"}[randBetween(0,2)];
+    }
+
+    private String getRandomEmployment() {
+    	int randomNumber = randBetween(0,4);
+    	return Employment.values()[randomNumber].displayName();
+    }
+
+    private String getRandomCategory() {
+    	int randomNumber = randBetween(0,2);
+    	return Category.values()[randomNumber].displayName();
     }
 
     private Sex getRandomSex(){
@@ -62,16 +81,13 @@ public class DataGenerator {
     }
 
     private String getRandomDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         GregorianCalendar gc = new GregorianCalendar();
         int year = randBetween(1980, 2000);
         gc.set(Calendar.YEAR, year);
 
         int dayOfYear = randBetween(1, gc.getActualMaximum(Calendar.DAY_OF_YEAR));
         gc.set(Calendar.DAY_OF_YEAR, dayOfYear);
-        gc.set(Calendar.HOUR_OF_DAY, 0);
-        gc.set(Calendar.MINUTE, 0);
-        gc.set(Calendar.SECOND, 0);
 
         return sdf.format(gc.getTime());
     }
