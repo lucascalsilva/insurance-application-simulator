@@ -36,7 +36,6 @@ public class InsuranceApplicationAdapter {
             int status = response.getStatus();
 
             if (status != 200) {
-            	System.out.println(endpoint);
                 throw new InsuranceAppServiceException("Error when creating the insurance application. HTTP Status: " + status);
             }
 

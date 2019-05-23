@@ -27,10 +27,10 @@ public class DataGenerator {
         if(batchProcess.getBaseRequestFilename() != null) dataLoader.setExtBaseFileRequestJson(batchProcess.getBaseRequestFilename());
         for(int i=0;i<batchProcess.getNumberOfApplications();i++) {
             NewApplication newApplication = dataLoader.getBaseApplication();
-            Sex sex = getRandomSex();
             newApplication.setCorporation(getRandomCorporation());
-            newApplication.setCategory(getRandomCategory());
-            newApplication.setEmployment(getRandomEmployment());
+            if(newApplication.getCategory() == null) newApplication.setCategory(getRandomCategory());
+            if(newApplication.getEmployment() == null) newApplication.setEmployment(getRandomEmployment());
+            Sex sex = getRandomSex();
             newApplication.getApplicant().setGender(sex.name());
             newApplication.getApplicant().setName(getRandomName(sex, batchProcess.getLanguage()));
             if(batchProcess.getApplicantMail() != null) newApplication.getApplicant().setEmail(batchProcess.getApplicantMail());
